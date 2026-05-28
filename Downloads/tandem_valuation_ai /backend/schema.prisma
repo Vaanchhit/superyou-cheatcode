@@ -1,0 +1,32 @@
+schema {
+  version = "1.0"
+}
+
+model Company {
+  id Int @id @default(autoincrement())
+  company_name String
+  industry String?
+  ticker String?
+  documents Document[]
+  valuation Valuation?
+  created_at DateTime @default(now())
+}
+
+model Document {
+  id Int @id @default(autoincrement())
+  filename String
+  filepath String
+  source_type String?
+  company_id Int
+  company Company @relation(fields: [company_id], references: [id])
+  created_at DateTime @default(now())
+}
+
+model Valuation {
+  id Int @id @default(autoincrement())
+  company_id Int @unique
+  payload Json @default("{}")
+  company Company @relation(fields: [company_id], references: [id])
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}

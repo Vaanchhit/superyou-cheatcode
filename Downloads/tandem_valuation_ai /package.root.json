@@ -1,0 +1,25 @@
+{
+  "name": "Valuation AI for Private Equity",
+  "version": "1.0.0",
+  "description": "Production-quality PE valuation workspace with PDF ingestion, deterministic modeling, and qualitative reasoning.",
+  "keywords": ["PE", "valuation", "DCF", "financial-modeling", "spreadsheet"],
+  "license": "MIT",
+  "author": "Built for Investment Banking",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/valuation-ai-pe"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "python": ">=3.12"
+  },
+  "scripts": {
+    "dev": "concurrently \"npm run dev:frontend\" \"npm run dev:backend\"",
+    "dev:frontend": "cd . && npm run dev",
+    "dev:backend": "cd backend && python -m uvicorn backend.main:app --reload --host 0.0.0.0 --port 8000",
+    "build": "npm run build",
+    "build:docker": "docker-compose build",
+    "start": "docker-compose up",
+    "test": "cd backend && pytest"
+  }
+}
